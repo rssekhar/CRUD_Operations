@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+
+    <!-- Bootstrap 4 cdn links: -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+    <!-- Icon links: -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- FontAwesome icon link: -->
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+    <!-- link stylesheet -->
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12"> -->
+        <form action="display.php" method="post">
+            <h2 class="text-center">Registration Form</h2>
+            <hr>
+            <div class="form-group">
+                <label for="uname">Name</label>
+                <input type="text" name="uname" class="form-control" required>
+
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female
+                <input type="radio" name="gender" value="others">Others
+
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" name="department" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" required>
+
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" required>
+
+            </div>
+            <div class="form-group">
+                <label for="number">Mobile Number</label><br>
+                <input type="number" name="number" class="form-control" required>
+
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Submit" style="width: 100%;">
+
+            </div>
+        </form>
+    <!-- </div> -->
+    </div>
+</body>
+</html>
