@@ -3,11 +3,11 @@ include("connect.php");
 
 $data = stripslashes(file_get_contents("php://input"));
 $mydata = json_decode($data,true);
-$id = $mydata['uid'];//dashboard.js line 155
+$id = $mydata['uid'];//
 
 
 //retrieve specific user data
-    $sql = "select * from registerdata where id={$id}";
+    $sql = "select * from userinfo where id={$id}";
     $result = $conn->query($sql);
     $row =$result->fetch_assoc();
 
