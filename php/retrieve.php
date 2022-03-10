@@ -2,7 +2,7 @@
 include("connect.php");
 
 //retrieve saved user data
-$sql = "select * from registerdata";
+$sql = "select * from userinfo";
 $result = $conn->query($sql);
 
 if($result->num_rows > 0){
