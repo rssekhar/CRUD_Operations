@@ -7,6 +7,12 @@ body{
     font-family: 'Times New Roman', Times, serif;
     background-color: whitesmoke;
 }
+b{
+    color: red;
+}
+.error{
+    color: red;
+}
 form{
     display: block;
     margin: 0px auto;
