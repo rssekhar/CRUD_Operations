@@ -17,11 +17,16 @@ function showData(){
             for(i=0;i<x.length;i++){
                 tbody.innerHTML +="<tr><td>" + 
                 x[i].id + "</td><td>" +
-                x[i].name +"</td><td>" + 
+                x[i].fname +"</td><td>" +
+                x[i].lname +"</td><td>" + 
+               
                 x[i].email + "</td><td>" +
-                x[i].number + "</td><td><button class='btn btn-warning btn-sm btn-edit mr-2' data-sid=" + 
+                x[i].dob +"</td><td>" +
+                x[i].number + "</td><td>" +
+                x[i].country +"</td><td>" +
+                x[i].bio +"</td><td><button class='btn btn-warning btn-sm btn-edit mr-2' data-sid=" + 
                 x[i].id + ">Edit</button><button class='btn btn-danger btn-sm btn-del' data-sid="+ 
-                x[i].id + "'>Delete</button></td></tr>";
+                x[i].id + ">Delete</button></td></tr>";
             }
         }else{
             console.log("problem occured");
@@ -41,13 +46,18 @@ document.getElementById("addUser").addEventListener("click",add_user);
 
 function add_user(e){
     e.preventDefault();
-    console.log("Save Button clicked");
+    // console.log("Save Button clicked");
+    
     let uid = document.getElementById("id").value;
-    let name = document.getElementById("name").value;
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;  
     let email = document.getElementById("email").value;
+    let dob = document.getElementById("dob").value;
     let number = document.getElementById("number").value;
-
-    // console.log(name,email,number);
+    let country = document.getElementById("country").value;
+    let bio = document.getElementById("bio").value;
+    
+    
 
     //create xhr object
     const xhr = new XMLHttpRequest();
@@ -63,7 +73,7 @@ function add_user(e){
             // console.log(xhr.responseText);
             document.getElementById("msg").innerHTML = "<div class='alert alert-success mt-3 role='alert'>" + 
             xhr.responseText + "</div>";
-            document.getElementById("myForm").reset();//to set blank form after submitting data
+            // document.getElementById("myForm").reset();//to set blank form after submitting data
             showData(); //this function is used to print data in table
         }
         else {
@@ -72,8 +82,8 @@ function add_user(e){
         
     };
      
-    const mydata = {id:uid,name:name,email:email,number:number};
-    console.log(mydata);
+    const mydata = {id:uid,fname:fname,lname:lname,email:email,dob:dob,number:number,country:country,bio:bio};
+    // console.log(mydata);
     //conver js object to json string
     const data = JSON.stringify(mydata);
     // console.log(data);
@@ -93,9 +103,9 @@ function user_delete(){
         // console.log(x[i].getAttribute("data-sid"));
         x[i].addEventListener("click",function(){
             id = x[i].getAttribute("data-sid");
-            // console.log("Delete Button Clicked",id);
+            console.log("Delete Button Clicked",id);
             const xhr = new XMLHttpRequest();
-            xhr.open("POST","delete.php",true);
+            xhr.open("POST","remove.php",true);
             xhr.setRequestHeader("Content-Type","application/json");
             xhr.onload=()=>{
                 if(xhr.status===200){
@@ -125,16 +135,20 @@ function user_delete(){
 function user_edit(){
     var x = document.getElementsByClassName("btn-edit");
     let uid = document.getElementById("id");
-    let name = document.getElementById("name");
+    let fname = document.getElementById("fname");
+    let lname = document.getElementById("lname");
     let email = document.getElementById("email");
+    let dob = document.getElementById("dob");
     let number = document.getElementById("number");
+    let country = document.getElementById("country");
+    let bio = document.getElementById("bio");
     // console.log(x);
     // console.log(x.length);
     for(let i=0;i < x.length;i++){
         // console.log(x[i].getAttribute("data-sid"));
         x[i].addEventListener("click",function(){
             id = x[i].getAttribute("data-sid");
-            // console.log("Delete Button Clicked",id);
+            console.log("edit Button Clicked",id);
             const xhr = new XMLHttpRequest();
             xhr.open("POST","edit.php",true);
             xhr.responseType = 'json';
@@ -143,10 +157,15 @@ function user_edit(){
                 if(xhr.status===200){
                     // console.log(xhr.response.id);
                     a = xhr.response;
+                    console.log(a);
                     uid.value = a.id;
-                    name.value = a.name;
+                    fname.value = a.fname;
+                    lname.value = a.lname;
                     email.value = a.email;
+                    dob.value = a.dob;
                     number.value = a.number;
+                    country.value = a.country;
+                    bio.value = a.bio;
                 }
                 else{
                     console.log("problem occured");
