@@ -6,9 +6,8 @@ $mydata = json_decode($data,true);
 $id = $mydata['id'];
 
 
-//insert data
 if(!empty($id)){
-    $sql = "delete from registerdata where id={$id}";
+    $sql = "delete from userinfo where id={$id}";
     if($conn->query($sql) == TRUE){
         echo "User Deleted Successfully";
     }
